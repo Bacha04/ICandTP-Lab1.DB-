@@ -50,7 +50,7 @@ namespace ICandTP_Lab1.DB_.Controllers
         public IActionResult Create()
         {
             ViewData["InsuarenceId"] = new SelectList(_context.Insuarences, "Id", "Id");
-            ViewData["ModelId"] = new SelectList(_context.Models, "Id", "Id");
+            ViewData["ModelId"] = new SelectList(_context.Models, "Id", "ModelName");
             ViewData["OwnerTin"] = new SelectList(_context.Owners, "Tin", "Tin");
             return View();
         }
@@ -69,7 +69,7 @@ namespace ICandTP_Lab1.DB_.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["InsuarenceId"] = new SelectList(_context.Insuarences, "Id", "Id", vechicle.InsuarenceId);
-            ViewData["ModelId"] = new SelectList(_context.Models, "Id", "Id", vechicle.ModelId);
+            ViewData["ModelId"] = new SelectList(_context.Models, "Id", "ModelName", vechicle.ModelId);
             ViewData["OwnerTin"] = new SelectList(_context.Owners, "Tin", "Tin", vechicle.OwnerTin);
             return View(vechicle);
         }

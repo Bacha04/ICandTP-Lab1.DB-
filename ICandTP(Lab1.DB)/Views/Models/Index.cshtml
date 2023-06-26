@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ICandTP_Lab1.DB_.Model>
+
+@{
+    ViewData["Title"] = "Моделі за маркою";
+}
+
+<h1>Моделі за маркою @ViewBag.BrandName </h1>
+
+<p>
+   @Html.ActionLink("Додати нову модель" , "Create", new {brandId = @ViewBag.BrandId})
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyTypes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localisation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyTypes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localisation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.BrandName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редагувати</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
